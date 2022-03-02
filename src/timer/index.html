@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timer</title>
-  <script defer src="../js/timer.js"></script>
+  <!-- <script defer src="../js/timer.js"></script> -->
 </head>
 
 <body>
@@ -15,6 +15,29 @@
   </label>
   <div class="display">0</div>
   <button class="starter">Start</button>
+  <script>
+    document.addEventListener('DOMContentLoaded', () =>{
+      let inputNumber = document.getElementById('id1');
+      let display = document.querySelector('.display');
+      let btn = document.querySelector('.starter');
+      let stopInterval;
+
+      function timer() {
+        display.textContent = inputNumber.value;
+        if (stopInterval) {
+          clearInterval(stopInterval)
+        }
+        stopInterval = setInterval(() => {
+          display.textContent--;
+          if (display.textContent <= 0) {
+                clearInterval(stopInterval)
+              }
+        }, 1000);
+      }
+      btn.addEventListener('click', timer);
+    });
+  </script>
 </body>
 
 </html>
+
